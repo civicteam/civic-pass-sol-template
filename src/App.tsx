@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import './App.css';
 import logo from './logo.svg';
-import { ConnectionProvider, useWallet, WalletProvider } from '@solana/wallet-adapter-react';
-import { clusterApiUrl } from "@solana/web3.js";
+import {ConnectionProvider, useConnection, useWallet, WalletProvider} from '@solana/wallet-adapter-react';
+import {clusterApiUrl, PublicKey} from "@solana/web3.js";
 import {
     GlowWalletAdapter,
     PhantomWalletAdapter,
@@ -14,29 +14,32 @@ import {
     WalletModalProvider,
     WalletMultiButton
 } from "@solana/wallet-adapter-react-ui";
+import {GatewayProvider, IdentityButton} from "@civic/solana-gateway-react";
 
 require('@solana/wallet-adapter-react-ui/styles.css');
+
+const GATEKEEPER_NETWORK = "ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6";
 
 const Content = () => {
     const wallet = useWallet()
     return <header className="App-header">
         <WalletMultiButton/>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Hi {wallet?.publicKey?.toBase58()}!</p>
-        <a
-            className="App-link"
-            href="https://docs.solana.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Learn Solana
-        </a>
+        {wallet.connected && <IdentityButton/>}
     </header>
 }
 
+const Gateway = () => {
+    const { connection } = useConnection();
+    const wallet = useWallet();
+    return <GatewayProvider connection={connection} wallet={wallet} gatekeeperNetwork={new PublicKey(GATEKEEPER_NETWORK)}>
+        <Content/>
+    </GatewayProvider>
+}
+
 function App() {
-    const network = WalletAdapterNetwork.Devnet;
-    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+    const network = WalletAdapterNetwork.Mainnet;
+    const endpoint = useMemo(() => process.env.REACT_APP_RPC_ENDPOINT || clusterApiUrl(network), [network]);
     const wallets = useMemo(
         () => [
             new PhantomWalletAdapter(),
@@ -53,7 +56,7 @@ function App() {
             <ConnectionProvider endpoint={endpoint}>
                 <WalletProvider wallets={wallets} autoConnect>
                     <WalletModalProvider>
-                        <Content />
+                        <Gateway />
                     </WalletModalProvider>
                 </WalletProvider>
             </ConnectionProvider>
