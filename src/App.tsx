@@ -39,6 +39,7 @@ const Gateway = () => {
 
 function App() {
     const network = WalletAdapterNetwork.Mainnet;
+    // you need to use an endpoint that supports web socket connections: the public solana rpc endpoint does not
     const endpoint = useMemo(() => process.env.REACT_APP_RPC_ENDPOINT || clusterApiUrl(network), [network]);
     const wallets = useMemo(
         () => [

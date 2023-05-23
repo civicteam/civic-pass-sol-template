@@ -2,11 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Official Civic Documentation
+
+You can find the official civic documentation hosted on [Gitbook](https://docs.civic.com/).
+
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `REACT_APP_RPC_ENDPOINT=<your RPC endpoint> yarn start`
+
+Note that the RPC endpoint you provide must support web socket connections. If you don't provide this environment variable the sample app uses the solana public endpoint that does not support web sockets, so you will see 'ws' errors in the developer console.
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
