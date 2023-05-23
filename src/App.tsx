@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import './App.css';
 import logo from './logo.svg';
-import {ConnectionProvider, useConnection, useWallet, WalletProvider} from '@solana/wallet-adapter-react';
-import {clusterApiUrl, PublicKey} from "@solana/web3.js";
+import {ConnectionProvider, useWallet, WalletProvider} from '@solana/wallet-adapter-react';
+import {clusterApiUrl, Connection, PublicKey} from "@solana/web3.js";
 import {
     GlowWalletAdapter,
     PhantomWalletAdapter,
@@ -30,7 +30,8 @@ const Content = () => {
 }
 
 const Gateway = () => {
-    const { connection } = useConnection();
+    // you need to use an endpoint that supports web socket connections: the public solana rpc endpoint does not
+    const connection = new Connection(process.env.REACT_APP_RPC_ENDPOINT || clusterApiUrl('mainnet-beta'));
     const wallet = useWallet();
     return <GatewayProvider connection={connection} wallet={wallet} gatekeeperNetwork={new PublicKey(GATEKEEPER_NETWORK)}>
         <Content/>
