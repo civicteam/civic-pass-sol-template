@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import './App.css';
 import logo from './logo.svg';
-import {ConnectionProvider, useWallet, WalletProvider} from '@solana/wallet-adapter-react';
-import {clusterApiUrl, Connection, PublicKey} from "@solana/web3.js";
+import {ConnectionProvider, useConnection, useWallet, WalletProvider} from '@solana/wallet-adapter-react';
+import {clusterApiUrl, PublicKey} from "@solana/web3.js";
 import {
     GlowWalletAdapter,
     PhantomWalletAdapter,
@@ -30,8 +30,7 @@ const Content = () => {
 }
 
 const Gateway = () => {
-    // you need to use an endpoint that supports web socket connections: the public solana rpc endpoint does not
-    const connection = new Connection(process.env.REACT_APP_RPC_ENDPOINT || clusterApiUrl('mainnet-beta'));
+    const { connection } = useConnection();
     const wallet = useWallet();
     return <GatewayProvider connection={connection} wallet={wallet} gatekeeperNetwork={new PublicKey(GATEKEEPER_NETWORK)}>
         <Content/>
@@ -40,6 +39,7 @@ const Gateway = () => {
 
 function App() {
     const network = WalletAdapterNetwork.Mainnet;
+    // you need to use an endpoint that supports web socket connections: the public solana rpc endpoint does not
     const endpoint = useMemo(() => process.env.REACT_APP_RPC_ENDPOINT || clusterApiUrl(network), [network]);
     const wallets = useMemo(
         () => [
