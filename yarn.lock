@@ -1100,22 +1100,23 @@
     eventemitter3 "^4.0.7"
     uuid "^8.3.2"
 
-"@civic/common-gateway-react@0.8.7":
-  version "0.8.7"
-  resolved "https://registry.yarnpkg.com/@civic/common-gateway-react/-/common-gateway-react-0.8.7.tgz#33b9f3b8434b24f3992b666280ac41c121732a81"
-  integrity sha512-FyjjY/ecTRaGwQvWGMC6JRbVyrBn9YowvbtQugSzkHCWT7tlx8oYJoCG5syh96/Ebqu42y4yLUDlh96xHwkudA==
+"@civic/common-gateway-react@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@civic/common-gateway-react/-/common-gateway-react-0.11.0.tgz#255f4f03fc99cc899b734276ef1630dd93c61d68"
+  integrity sha512-DmFagjg5J39+dtUOMEWUneMSlaN++FjFVuAta8w026t/6zfXIwNWDnyxJw8FkfcqJFVFDaUDPaVNGNlolnm32A==
   dependencies:
-    fetch-retry-ts "^1.1.24"
+    fetch-retry "^5.0.6"
     iframe-resizer-react "^1.1.0"
     ramda "^0.27.1"
     styled-components "^5.3.1"
+    uuid "^9.0.0"
 
-"@civic/solana-gateway-react@^0.12.2":
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/@civic/solana-gateway-react/-/solana-gateway-react-0.12.2.tgz#3e2b44bbe1c1e9e139bf0829720372717648af8c"
-  integrity sha512-0IqzaV+FhuNVSaHR1s/eT3tH+S61DqLnvBtw5C/LHj+F+R5+ImG+5lFJXKYQaHr/V3GR6Ablwre2Bpnz+/hhaA==
+"@civic/solana-gateway-react@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@civic/solana-gateway-react/-/solana-gateway-react-0.15.0.tgz#a6800647363f6ef1ae856d48010e65e28ec78d6e"
+  integrity sha512-MBfDvN94KuZd/YW3B4Koyf+Na9MrI14aj7D1Woh1LghRWhiDO1de4svd3hN2o/daogt+dPPfMhwLaM7kpmcOlw==
   dependencies:
-    "@civic/common-gateway-react" "0.8.7"
+    "@civic/common-gateway-react" "0.11.0"
     "@identity.com/prove-solana-wallet" "0.4.2"
     "@identity.com/solana-gateway-ts" "0.11.0-alpha.5"
     "@solana/web3.js" "^1.73.0"
@@ -6441,10 +6442,10 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-fetch-retry-ts@^1.1.24:
-  version "1.1.25"
-  resolved "https://registry.yarnpkg.com/fetch-retry-ts/-/fetch-retry-ts-1.1.25.tgz#25849a87a5a016cc772f90986d95dd5049eeb5ac"
-  integrity sha512-kjJcfBYDbajnxMBfBa85hrS0Z+A0bDKuZWuzh5uHpaLSm2qZ3eAND5sDVfFUuIJg51sTd91cdB+Ayqo3magB/g==
+fetch-retry@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-5.0.6.tgz#17d0bc90423405b7a88b74355bf364acd2a7fa56"
+  integrity sha512-3yurQZ2hD9VISAhJJP9bpYFNQrHHBXE2JxxjY5aLEcDi46RmAzJE2OC9FAde0yis5ElW0jTTzs0zfg/Cca4XqQ==
 
 file-entry-cache@^6.0.1:
   version "6.0.1"
@@ -11625,6 +11626,11 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
 
 v8-to-istanbul@^8.1.0:
   version "8.1.1"
